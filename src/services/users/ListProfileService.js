@@ -7,7 +7,6 @@ export default class CreateUserService {
   }
 
   async execute(id) {
-    console.log('Asdas');
     const user = await this.usersRepository.findById(id);
     if (!user) {
       throw new AppError('User does not exist');
