@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import RepositoriesController from '../controllers/RepositoriesController';
 
-const usersRouter = Router();
+const repositoriesRouter = Router();
 
-usersRouter.post('/', RepositoriesController.create);
-/* usersRouter.get('/:user_id', UsersController.show);
-usersRouter.delete('/:user_id', UsersController.delete); */
+repositoriesRouter.post('/', RepositoriesController.create);
+repositoriesRouter.get('/:repository_id', RepositoriesController.show);
+repositoriesRouter.delete('/:repository_id', RepositoriesController.delete);
 
-export default usersRouter;
+export default repositoriesRouter;

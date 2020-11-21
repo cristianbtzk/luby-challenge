@@ -2,8 +2,9 @@ import Sequelize from 'sequelize';
 import dbConfig from '../config/database';
 import User from '../models/User';
 import Repository from '../models/Repository';
+import Token from '../models/Token';
 
-const models = [User, Repository];
+const models = [User, Repository, Token];
 
 const connection = new Sequelize(dbConfig);
 

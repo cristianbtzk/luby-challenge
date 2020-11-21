@@ -10,4 +10,14 @@ export default class RepositoryRepository {
 
     return repository;
   }
+
+  async findById(id) {
+    const repository = await Repository.findByPk(id);
+
+    return repository;
+  }
+
+  async delete(repository) {
+    await repository.destroy();
+  }
 }

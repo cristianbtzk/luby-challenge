@@ -1,6 +1,6 @@
 import CreateRepositoryService from '../services/repositories/CreateRepositoryService';
-import DeleteUserService from '../services/users/DeleteUserService';
-import ListProfileService from '../services/users/ListProfileService';
+import DeleteRepositoryService from '../services/repositories/DeleteRepositoryService';
+import ShowRepositoryService from '../services/repositories/ShowRepositoryService';
 
 export default {
   async create(request, response) {
@@ -16,24 +16,24 @@ export default {
 
     return response.json(repository);
   },
-/*
+
   async show(request, response) {
-    const { user_id } = request.params;
+    const { repository_id } = request.params;
 
-    const listProfile = new ListProfileService();
+    const showRepository = new ShowRepositoryService();
 
-    const user = await listProfile.execute(user_id);
+    const repository = await showRepository.execute(repository_id);
 
-    return response.json(user);
+    return response.json(repository);
   },
 
   async delete(request, response) {
-    const { user_id } = request.params;
+    const { repository_id } = request.params;
 
-    const deleteUser = new DeleteUserService();
+    const deleteRepository = new DeleteRepositoryService();
 
-    await deleteUser.execute(user_id);
+    await deleteRepository.execute(repository_id);
 
     return response.status(200).json({ message: 'Success' });
-  }, */
+  },
 };
