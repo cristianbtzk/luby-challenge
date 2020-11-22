@@ -1,0 +1,34 @@
+module.exports = {
+  up: async (queryInterface, Sequelize) => queryInterface.createTable('stars', {
+    id: {
+      type: Sequelize.UUID,
+      primaryKey: true,
+      allowNull: false,
+      defaultValue: Sequelize.literal('uuid_generate_v4()'),
+    },
+    user_id: {
+      type: Sequelize.UUID,
+      allowNull: false,
+      references: { model: 'users', key: 'id' },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    },
+    repository_id: {
+      type: Sequelize.UUID,
+      allowNull: false,
+      references: { model: 'repositories', key: 'id' },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
+    updated_at: {
+      type: Sequelize.DATE,
+      allowNull: false,
+    },
+  }),
+
+  down: async (queryInterface) => queryInterface.dropTable('stars'),
+};
