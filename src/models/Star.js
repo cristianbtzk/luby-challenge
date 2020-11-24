@@ -9,7 +9,7 @@ class Star extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'User' });
-    this.belongsTo(models.Repository, { foreignKey: 'repository_id', as: 'Repository' });
+    this.belongsTo(models.Repository, { foreignKey: 'repository_id', through: 'stars', as: 'Repository' });
   }
 }
 

@@ -1,4 +1,5 @@
 import StartFollowingService from '../services/follows/StartFollowingService';
+import ListFollowersFromUserService from '../services/follows/ListFollowersFromUserService';
 import StopFollowingService from '../services/follows/StopFollowingService';
 
 export default {
@@ -12,6 +13,16 @@ export default {
     const follow = await startFollowing.execute({ followed_id, follower_id });
 
     return response.json(follow);
+  },
+
+  async index(request, response) {
+    const { user_id } = request.params;
+
+    const listFollowersFromUserService = new ListFollowersFromUserService();
+
+    const followers = await listFollowersFromUserService.execute(user_id);
+
+    return response.json(followers);
   },
 
   async delete(request, response) {

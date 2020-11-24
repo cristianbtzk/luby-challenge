@@ -9,13 +9,15 @@ export default class CreateRepositoryService {
   }
 
   async execute({
-    name, description, isPublic, slug, user_id,
+    name, description, isPublic, user_id,
   }) {
     const checkUser = await this.usersRepository.findById(user_id);
 
     if (!checkUser) {
       throw new AppError('User does not exist');
     }
+
+    const slug = `${checkUser.name}/${name}`;
 
     const repository = await this.repositoriesRepository.create({
       name,

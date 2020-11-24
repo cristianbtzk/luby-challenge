@@ -16,6 +16,13 @@ export default class StartFollowingService {
       throw new AppError('Error while creating follow.');
     }
 
+    const checkFollowExists = await this.followsRepository
+      .findExistentFollow({ follower_id, followed_id });
+
+    if (checkFollowExists) {
+      throw new AppError('This follow already exists');
+    }
+
     const follow = await this.followsRepository.create({ followed_id, follower_id });
 
     return follow;

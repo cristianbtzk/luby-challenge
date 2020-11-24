@@ -14,6 +14,7 @@ class Repository extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'RepositoryOwner' });
+    this.hasMany(models.Star, { foreignKey: 'repository_id', as: 'Stars' });
   }
 }
 

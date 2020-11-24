@@ -12,10 +12,12 @@ const connection = new Sequelize(dbConfig);
 
 models.forEach((model) => {
   model.init(connection);
+});
+
+models.forEach((model) => {
   if (model.associate) {
     model.associate(connection.models);
   }
 });
-User.init(connection);
 
 export default connection;
