@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 
+import { errors } from 'celebrate';
 import AppError from './errors/AppError';
 import routes from './routes';
 import './database';
@@ -10,6 +11,8 @@ const server = express();
 server.use(express.json());
 
 server.use(routes);
+
+server.use(errors());
 
 server.use((err, request, response, _) => {
   if (err instanceof AppError) {
